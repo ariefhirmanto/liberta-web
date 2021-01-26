@@ -6,12 +6,13 @@ import {
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import OverallQuality from './OverallQuality';
-import LatestOrders from './LatestOrders';
-import LatestProducts from './LatestProducts';
-import DataAcquisition from './DataAcquisition';
-import TasksProgress from './TasksProgress';
+import DataTemperature from './DataTemperature';
+import DataTurbidity from './DataTurbidity';
+import DataPH from './DataPH';
+import DataHumidity from './DataHumidity';
+import DataVoltage from './DataVoltage';
+import BatteryVoltage from './BatteryVoltage';
 import TotalSpot from './TotalSpot';
-import TotalProfit from './TotalProfit';
 import TrafficByDevice from './TrafficByDevice';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,13 +24,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Dashboard = () => {
+const IndividualDashboard = () => {
   const classes = useStyles();
 
   return (
     <Page
       className={classes.root}
-      title="Gambaran Umum"
+      title="Data Pengguna"
     >
       <Container maxWidth={false}>
         <Grid
@@ -48,65 +49,47 @@ const Dashboard = () => {
           <Grid
             item
             lg={6}
-            sm={6}
+            sm={12}
             xl={6}
             xs={12}
           >
-            <TotalSpot />
+            <BatteryVoltage />
           </Grid>
-          {/* <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <TasksProgress />
-          </Grid> */}
-          {/* <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <TotalProfit />
-          </Grid> */}
           <Grid
             item
-            lg={8}
+            lg={6}
             md={12}
-            xl={9}
+            xl={6}
             xs={12}
           >
-            <DataAcquisition />
+            <DataTemperature />
           </Grid>
           <Grid
             item
-            lg={4}
-            md={6}
-            xl={3}
-            xs={12}
-          >
-            <TrafficByDevice />
-          </Grid>
-          <Grid
-            item
-            lg={4}
-            md={6}
-            xl={3}
-            xs={12}
-          >
-            {/* <LatestProducts />
-          </Grid>
-          <Grid
-            item
-            lg={8}
+            lg={6}
             md={12}
-            xl={9}
+            xl={6}
             xs={12}
-          > */}
-            {/* <LatestOrders /> */}
+          >
+            <DataHumidity />
+          </Grid>
+          <Grid
+            item
+            lg={6}
+            md={12}
+            xl={6}
+            xs={12}
+          >
+            <DataPH />
+          </Grid>
+          <Grid
+            item
+            lg={6}
+            md={12}
+            xl={6}
+            xs={12}
+          >
+            <DataTurbidity />
           </Grid>
         </Grid>
       </Container>
@@ -114,4 +97,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default IndividualDashboard;

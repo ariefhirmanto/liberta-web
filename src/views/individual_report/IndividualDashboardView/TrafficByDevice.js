@@ -41,7 +41,7 @@ const TrafficByDevice = ({ className, ...rest }) => {
         hoverBorderColor: colors.common.white
       }
     ],
-    labels: ['Baik', 'Buruk', 'Sedang']
+    labels: ['Desktop', 'Tablet', 'Mobile']
   };
 
   const options = {

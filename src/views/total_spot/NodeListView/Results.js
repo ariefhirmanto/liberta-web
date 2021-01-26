@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Results = ({ className, customers, ...rest }) => {
+const Results = ({ className, data_pengukuran, ...rest }) => {
   const classes = useStyles();
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
@@ -36,7 +37,7 @@ const Results = ({ className, customers, ...rest }) => {
     let newSelectedCustomerIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = customers.map((customer) => customer.id);
+      newSelectedCustomerIds = data_pengukuran.map((data) => data.id);
     } else {
       newSelectedCustomerIds = [];
     }
@@ -82,7 +83,7 @@ const Results = ({ className, customers, ...rest }) => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell padding="checkbox">
+                {/* <TableCell padding="checkbox">
                   <Checkbox
                     checked={selectedCustomerIds.length === customers.length}
                     color="primary"
@@ -92,69 +93,75 @@ const Results = ({ className, customers, ...rest }) => {
                     }
                     onChange={handleSelectAll}
                   />
+                </TableCell> */}
+                <TableCell>
+                  Titik Pengukuran
                 </TableCell>
                 <TableCell>
-                  Name
+                  Pemilik Keramba
                 </TableCell>
                 <TableCell>
-                  Email
+                  Lokasi
                 </TableCell>
                 <TableCell>
-                  Location
+                  Nomor Handphone
                 </TableCell>
                 <TableCell>
-                  Phone
-                </TableCell>
-                <TableCell>
-                  Registration date
+                  Hasil Pengukuran Lingkungan
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {customers.slice(0, limit).map((customer) => (
+              {data_pengukuran.slice(0, limit).map((data) => (
                 <TableRow
+                  style={{ cursor: 'pointer' }}
                   hover
-                  key={customer.id}
-                  selected={selectedCustomerIds.indexOf(customer.id) !== -1}
+                  key={data.id}
+                  selected={selectedCustomerIds.indexOf(data.id) !== -1}
                 >
-                  <TableCell padding="checkbox">
+                  {/* <TableCell padding="checkbox">
                     <Checkbox
                       checked={selectedCustomerIds.indexOf(customer.id) !== -1}
                       onChange={(event) => handleSelectOne(event, customer.id)}
                       value="true"
                     />
+                  </TableCell> */}
+                  <TableCell>
+                    <Link 
+                      to={'/app/individual_dashboard'}
+                      style={{ textDecoration:'none', color:'inherit' }}
+                    >
+                      {data.node}
+                    </Link>
                   </TableCell>
                   <TableCell>
                     <Box
                       alignItems="center"
                       display="flex"
                     >
-                      <Avatar
-                        className={classes.avatar}
-                        src={customer.avatarUrl}
-                      >
-                        {getInitials(customer.name)}
-                      </Avatar>
                       <Typography
                         color="textPrimary"
                         variant="body1"
                       >
-                        {customer.name}
+                        <Link 
+                          to={'/app/individual_dashboard'}
+                          style={{ textDecoration:'none', color:'inherit' }}
+                        >
+                          {data.name}
+                        </Link>
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {customer.email}
+                    {`${data.address.city}, ${data.address.state}, ${data.address.country}`}
                   </TableCell>
                   <TableCell>
-                    {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
+                    {data.phone}
                   </TableCell>
                   <TableCell>
-                    {customer.phone}
+                    {data.condition}
                   </TableCell>
-                  <TableCell>
-                    {moment(customer.createdAt).format('DD/MM/YYYY')}
-                  </TableCell>
+                  
                 </TableRow>
               ))}
             </TableBody>
@@ -163,7 +170,7 @@ const Results = ({ className, customers, ...rest }) => {
       </PerfectScrollbar>
       <TablePagination
         component="div"
-        count={customers.length}
+        count={data_pengukuran.length}
         onChangePage={handlePageChange}
         onChangeRowsPerPage={handleLimitChange}
         page={page}
@@ -180,3 +187,8 @@ Results.propTypes = {
 };
 
 export default Results;
+
+/* Untuk mendapat tanggal
+ <TableCell>
+                    {moment(customer.createdAt).format('DD/MM/YYYY')}
+                  </TableCell> */

@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import {
   Box,
   Button,
@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Sales = ({ className, ...rest }) => {
+const DataVoltage = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -29,15 +29,10 @@ const Sales = ({ className, ...rest }) => {
       {
         backgroundColor: colors.indigo[500],
         data: [18, 5, 19, 27, 29, 19, 20],
-        label: 'This year'
-      },
-      {
-        backgroundColor: colors.grey[200],
-        data: [11, 20, 12, 29, 30, 25, 13],
-        label: 'Last year'
+        label: 'Voltase Baterai'
       }
     ],
-    labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug']
+    labels: ['1 Des', '2 Des', '3 Des', '4 Des', '5 Des', '6 Des']
   };
 
   const options = {
@@ -107,10 +102,10 @@ const Sales = ({ className, ...rest }) => {
             size="small"
             variant="text"
           >
-            Last 7 days
+            7 Hari Terakhir
           </Button>
         )}
-        title="Latest Sales"
+        title="Hasil Pengukuran Seminggu Terakhir"
       />
       <Divider />
       <CardContent>
@@ -118,7 +113,7 @@ const Sales = ({ className, ...rest }) => {
           height={400}
           position="relative"
         >
-          <Bar
+          <Line
             data={data}
             options={options}
           />
@@ -143,8 +138,8 @@ const Sales = ({ className, ...rest }) => {
   );
 };
 
-Sales.propTypes = {
+DataVoltage.propTypes = {
   className: PropTypes.string
 };
 
-export default Sales;
+export default DataVoltage;

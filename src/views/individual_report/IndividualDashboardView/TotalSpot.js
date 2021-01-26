@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%'
   },
   avatar: {
-    backgroundColor: colors.green[600],
+    backgroundColor: colors.indigo[600],
     height: 56,
     width: 56
   },
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const TotalCustomers = ({ className, ...rest }) => {
+const TotalSpot = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -52,11 +52,11 @@ const TotalCustomers = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              TOTAL CUSTOMERS
+              JUMLAH TITIK PENGUKURAN
             </Typography>
             <Typography
               color="textPrimary"
-              variant="h3"
+              variant="h2"
             >
               1,600
             </Typography>
@@ -67,32 +67,13 @@ const TotalCustomers = ({ className, ...rest }) => {
             </Avatar>
           </Grid>
         </Grid>
-        <Box
-          mt={2}
-          display="flex"
-          alignItems="center"
-        >
-          <ArrowUpwardIcon className={classes.differenceIcon} />
-          <Typography
-            className={classes.differenceValue}
-            variant="body2"
-          >
-            16%
-          </Typography>
-          <Typography
-            color="textSecondary"
-            variant="caption"
-          >
-            Since last month
-          </Typography>
-        </Box>
       </CardContent>
     </Card>
   );
 };
 
-TotalCustomers.propTypes = {
+TotalSpot.propTypes = {
   className: PropTypes.string
 };
 
-export default TotalCustomers;
+export default TotalSpot;

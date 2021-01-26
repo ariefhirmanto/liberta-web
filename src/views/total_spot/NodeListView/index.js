@@ -18,23 +18,23 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const CustomerListView = () => {
+const NodeListView = () => {
   const classes = useStyles();
-  const [customers] = useState(data);
+  const [data_pengukuran] = useState(data);
 
   return (
     <Page
       className={classes.root}
-      title="Customers"
+      title="Pengukuran Titik"
     >
       <Container maxWidth={false}>
         <Toolbar />
         <Box mt={3}>
-          <Results customers={customers} />
+          <Results data_pengukuran={data_pengukuran} />
         </Box>
       </Container>
     </Page>
   );
 };
 
-export default CustomerListView;
+export default NodeListView;
