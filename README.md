@@ -1,4 +1,4 @@
-## [Dashboard Tugas Akhir]
+## Dashboard Tugas Akhir
 ![license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 [![React Material Dashboard](https://s3.eu-west-2.amazonaws.com/devias/products/react-material-dashboard/react-material-free-xl.jpg)](https://react-material-dashboard.devias.io/)
